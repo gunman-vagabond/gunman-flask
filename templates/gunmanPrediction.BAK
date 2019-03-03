@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+   <title>
+    ガンマン画像のAI判別
+   </title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script>
+function dispImg() {
+    var url = $("#url_input").val();
+    $("#img").attr("src", url);
+    $("#url").val(url);
+//    $("#AIOut2").val("");
+}	     
+function dispImg2() {
+    var url = $("#url_select").val();
+    $("#img").attr("src", url);
+    $("#url").val(url);
+//    $("#AIOut2").val("");
+}	     
+
+//window.onload = function(){
+//    dispImg2();
+//}
+
+</script>
+<style type="text/css">
+body,td,button,input,select {
+	font-size: 30px;
+}
+img {
+	max-width: 320px;
+}
+</style>
+
+  </head>
+
+  <body>
+
+   画像選択：
+   <select id="url_select" onchange="dispImg2()">
+    {% for opt in url_select_options %}
+     <option value="{{ opt }}">{{ opt }}</option>
+    {% endfor %}
+   </select>
+   <p>
+
+   自由記述：
+   <input type="text" id="url_input" name="url_input" value="{{ url }}" size="80">
+   <button onclick="dispImg()">表示</button>
+
+   <p>
+   <img id="img" src="{{ url }}">
+   <p>
+
+   <form action="/gunmanPrediction" method="POST">
+    <input type="hidden" name="url" id="url" value="{{ url }}">
+    <input type="submit" value="画像を判別">
+   </form>
+   <p>
+
+   <table border="1" cellspacing="1" cellpadding="1">
+    <tr> <td> ガンマン率     </td><td align="right"> {{ gunman }}   % </td> </tr>
+    <tr> <td> ウルトラマン率 </td><td align="right"> {{ ultraman }} % </td> </tr>
+    <tr> <td> 仮面ライダー率 </td><td align="right"> {{ rider }}    % </td> </tr>
+    <tr> <td> プリキュア率   </td><td align="right"> {{ precure }}  % </td> </tr>
+   </table>
+
+   <p>
+   {{ ret2 }}
+
+  <hr>
+  <p>
+   <a href="https://colab.research.google.com/drive/1AZXJ7lyBo_6dvDyYLxBPLIr-VwTPxC-C">
+     Colaboratory で解説(python notebook)
+   </a>
+  <p>
+
+  </body>
+
+</html>
