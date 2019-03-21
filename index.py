@@ -17,6 +17,11 @@ from GunmanPrediction import gunmanPrediction;
 def gunmanPredictionDispatch():
     return gunmanPrediction(request, requests)
 
+from GunmanPredictionChainer import gunmanPredictionChainer;
+@app.route('/gunmanPrediction.Chainer', methods=['GET', 'POST'])
+def gunmanPredictionDispatchChainer():
+    return gunmanPredictionChainer(request, requests)
+
 from GunclockImageAI import gunclockImageAI;
 @app.route('/gunclockImageAI', methods=['GET', 'POST'])
 def gunclockImageAIDispatch():
