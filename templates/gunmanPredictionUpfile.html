@@ -10,15 +10,19 @@
 <script>
 function changeFile(obj){
     console.log(obj.id);
+    fileform = document.getElementById('fileform');
+    fileform.submit();
     document.getElementById("result").style.display = "none";
 }
 
-document.getElementById("result").style.display = "{{ result_display }}" ;
+window.onload = function() {
+  document.getElementById("result").style.display = "{{ result_display }}" ;
+}
 
 </script>
 <style type="text/css">
 body,td,button,input,select {
-	font-size: 30px;
+	_font-size: 30px;
 }
 img {
 	max-width: 320px;
@@ -29,19 +33,23 @@ img {
 
   <body>
 
-    <form method="POST" enctype="multipart/form-data">
+    ガンマン判定をしたい画像を選択してください。
+    <p>
+
+    <form method="POST" enctype="multipart/form-data" id="fileform">
       <input type="file" name="file" onchange="changeFile(this);">
       <p>
-      <input type="submit" value="画像を判別">
+      <input type="submit" value="画像を判別" style="display:none;">
     </form>
 
     <p>
+
+<div id="result">
 
     <img src="{{ imgfilename }}">
 
    <p>
 
-<div id="result">
    <table border="1" cellspacing="1" cellpadding="1">
     <tr> <td> ガンマン率     </td><td align="right"> {{ gunman }}   % </td> </tr>
     <tr> <td> ウルトラマン率 </td><td align="right"> {{ ultraman }} % </td> </tr>
