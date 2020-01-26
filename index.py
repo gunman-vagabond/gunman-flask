@@ -5,8 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    prediction = 30
-    return render_template('index.html', prediction=prediction)
+    return render_template('index.html')
 
 @app.route('/hello')
 def hello():
@@ -20,7 +19,7 @@ def gunmanPredictionDispatch():
 from GunmanPredictionUpfile import gunmanPredictionUpfile;
 @app.route('/gunmanPredictionUpfile', methods=['GET', 'POST'])
 def gunmanPredictionUpfileDispatch():
-    return gunmanPredictionUpfile(request, requests)
+    return gunmanPredictionUpfile(request)
 
 from GunmanPredictionChainer import gunmanPredictionChainer;
 @app.route('/gunmanPrediction.Chainer', methods=['GET', 'POST'])

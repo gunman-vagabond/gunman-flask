@@ -1,6 +1,5 @@
 from flask import Flask, request, render_template
 
-import requests
 from io import BytesIO
 
 import keras
@@ -11,7 +10,6 @@ from keras.models import model_from_json
 from keras.layers.convolutional import Conv2D, MaxPooling2D
 from keras.layers.core import Dense, Dropout, Activation, Flatten
 import numpy as np
-#from sklearn.model_selection import train_test_split
 from PIL import Image
 import glob
 import os.path
@@ -25,7 +23,7 @@ model = model_from_json(json_string)
 model.load_weights(os.path.join(f_model,weights_filename))
 
 
-def gunmanPredictionUpfile(request, requests):
+def gunmanPredictionUpfile(request):
 
     ratio_gunman=""
     ratio_ultraman=""
