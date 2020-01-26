@@ -17,17 +17,22 @@ from GunmanPrediction import gunmanPrediction;
 def gunmanPredictionDispatch():
     return gunmanPrediction(request, requests)
 
+from GunmanPredictionUpfile import gunmanPredictionUpfile;
+@app.route('/gunmanPredictionUpfile', methods=['GET', 'POST'])
+def gunmanPredictionUpfileDispatch():
+    return gunmanPredictionUpfile(request, requests)
+
 from GunmanPredictionChainer import gunmanPredictionChainer;
 @app.route('/gunmanPrediction.Chainer', methods=['GET', 'POST'])
 def gunmanPredictionDispatchChainer():
     return gunmanPredictionChainer(request, requests)
 
-from GunclockImageAI import gunclockImageAI;
-@app.route('/gunclockImageAI', methods=['GET', 'POST'])
-def gunclockImageAIDispatch():
-    return gunclockImageAI(request, requests)
+#from GunclockImageAI import gunclockImageAI;
+#@app.route('/gunclockImageAI', methods=['GET', 'POST'])
+#def gunclockImageAIDispatch():
+#    return gunclockImageAI(request, requests)
 
 
 if __name__ == '__main__':
     app.debug = True
-    app.run(host='0.0.0.0', port=80)
+    app.run(host='0.0.0.0', port=18080)
